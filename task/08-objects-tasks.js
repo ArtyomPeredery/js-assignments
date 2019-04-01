@@ -23,9 +23,16 @@
  *    console.log(r.getArea());   // => 200
  */
 function Rectangle(width, height) {
-    throw new Error('Not implemented');
-}
+    let rectangleObject = {
+        width: width,
+        height: height,
+        getArea: function() {
+            return width * height;
+        }
+    }
 
+    return rectangleObject;
+}
 
 /**
  * Returns the JSON representation of specified object
@@ -38,7 +45,7 @@ function Rectangle(width, height) {
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
 function getJSON(obj) {
-    throw new Error('Not implemented');
+    return JSON.stringify(obj);
 }
 
 
