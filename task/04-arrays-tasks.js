@@ -318,7 +318,14 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
 function get3TopItems(arr) {
-   throw new Error('Not implemented');
+   arr = arr.sort(function(a, b) {
+      return b - a;
+    });
+    if (arr.length>3){
+      arr = arr.slice(0,3);
+   }
+
+  return arr;
 }
  
  
@@ -336,7 +343,17 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-   throw new Error('Not implemented');
+   var max = 0;
+
+   var newarr = []
+   arr.map(el => {
+      if(typeof el == "number")newarr.push(el)
+   }
+   );
+
+   newarr.filter(val => val > max ? max = val : max);
+
+   return max;
 }
  
 /** 
@@ -353,7 +370,10 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-   throw new Error('Not implemented');
+   var numberEnum = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' , 'nine' ];
+   return arr.sort(function(a,b){
+       return numberEnum.indexOf(a) > numberEnum.indexOf(b);
+   })
 }
 
 /** 
@@ -369,7 +389,12 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
 function getItemsSum(arr) {
-   throw new Error('Not implemented');
+   var newArr = arr.filter(function(value){
+      return arr.indexOf(value) == arr.lastIndexOf(value);
+  });
+  return newArr.length > 0 ? newArr.reduce(function(sum,value){
+     return sum+value;
+  }) : 0 ;
 }
  
 /** 
@@ -551,7 +576,12 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+   return arr.reduce(
+      function(result, value){
+              return result.concat(childrenSelector(value));
+      }
+      , new Array()
+  );
 }
 
 
