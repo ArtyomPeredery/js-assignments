@@ -208,12 +208,10 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  for (var i = 2; i <= Math.sqrt(n); i++) {
-        if (n % i == 0) {
-            return false;
-        }
-    }
-     return true;
+ for(let i = 2, s = Math.sqrt(n); i <= s; i++)
+        if(n % i === 0) 
+            return false; 
+    return n > 1;
 }
 
   
